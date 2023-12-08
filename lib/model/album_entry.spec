@@ -11,8 +11,8 @@
     "generateRepositorySingleton": false,
     "generateModel": true,
     "generateEntity": true,
-    "generateForm": true,
-    "generateList": true,
+    "generateForm": false,
+    "generateList": false,
     "generateDropDownButton": false,
     "generateInternalComponent": false,
     "generateEmbeddedComponent": true

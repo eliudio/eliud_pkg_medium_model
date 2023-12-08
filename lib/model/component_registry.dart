@@ -38,9 +38,6 @@ class ComponentRegistry {
       "albums",
     ]);
 
-    Apis.apis().getRegistryApi().register(
-        componentName: "eliud_pkg_medium_model_internalWidgets",
-        componentConstructor: ListComponentFactory());
     Apis.apis()
         .getRegistryApi()
         .addDropDownSupporter("albums", DropdownButtonComponentFactory());

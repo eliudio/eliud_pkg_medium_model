@@ -16,48 +16,16 @@
 import 'package:eliud_core_helpers/etc/random.dart';
 import 'package:eliud_core_helpers/helpers/common_tools.dart';
 import 'package:eliud_core_helpers/query/query_tools.dart';
-import 'package:eliud_core_main/model/app_model.dart';
 
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../model/album_entry_list_bloc.dart';
-import '../model/album_entry_list.dart';
-import '../model/album_entry_list_event.dart';
 import '../model/album_entry_model.dart';
 import '../model/album_entry_entity.dart';
 import '../model/album_entry_repository.dart';
 
 typedef AlbumEntryListChanged = Function(List<AlbumEntryModel> values);
 
-albumEntrysList(app, context, value, trigger) =>
-    EmbeddedComponentFactory.albumEntrysList(app, context, value, trigger);
-
-class EmbeddedComponentFactory {
-/* 
- * albumEntrysList function to construct a list of AlbumEntryModel
- */
-  static Widget albumEntrysList(AppModel app, BuildContext context,
-      List<AlbumEntryModel> values, AlbumEntryListChanged trigger) {
-    AlbumEntryInMemoryRepository inMemoryRepository =
-        AlbumEntryInMemoryRepository(
-      trigger,
-      values,
-    );
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<AlbumEntryListBloc>(
-          create: (context) => AlbumEntryListBloc(
-            albumEntryRepository: inMemoryRepository,
-          )..add(LoadAlbumEntryList()),
-        )
-      ],
-      child: AlbumEntryListWidget(app: app, isEmbedded: true),
-    );
-  }
-}
+class EmbeddedComponentFactory {}
 
 /* 
  * AlbumEntryInMemoryRepository is an in memory implementation of AlbumEntryRepository
